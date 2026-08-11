@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saanvika Sarees — Handloom. Elegant. Direct from India.</title>
+<meta name="description" content="Saanvika Sarees — authentic handloom and silk cotton sarees, handpicked in India and delivered across Malaysia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500;600&family=Playball&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory: #F4EFE3;
+    --ivory-deep: #ECE4D2;
+    --ink: #2A2520;
+    --ink-soft: #4A423A;
+    --brass: #A9832E;
+    --brass-light: #C9A24F;
+    --maroon: #6B2737;
+    --line: #DDD0B4;
+    --card: #FBF8F1;
+    --shadow: 0 20px 40px -20px rgba(42,37,32,0.25);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    font-size:18px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  h1,h2,h3{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:600;
+  }
+
+  .script{
+    font-family:'Playball', cursive;
+    font-weight:400;
+    color:var(--brass);
+  }
+
+  .wrap{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(244,239,227,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 40px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand img{height:44px;width:auto;}
+  .brand-word{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.02em;
+  }
+  .brand-word span{
+    display:block;
+    font-family:'Jost', sans-serif;
+    font-size:9.5px;
+    letter-spacing:0.32em;
+    color:var(--brass);
+    font-weight:600;
+    margin-top:1px;
+  }
+  nav.links{
+    display:flex;
+    gap:36px;
+    font-family:'Jost', sans-serif;
+    font-size:13.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  nav.links a{
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.links a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0;
+    height:1px;
+    background:var(--brass);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+
+  .nav-actions{display:flex;align-items:center;gap:14px;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Jost', sans-serif;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:12px 24px;
+    border-radius:2px;
+    border:1px solid var(--ink);
+    transition:all .25s ease;
+    white-space:nowrap;
+  }
+  .btn-solid{
+    background:var(--ink);
+    color:var(--ivory);
+  }
+  .btn-solid:hover{
+    background:var(--brass);
+    border-color:var(--brass);
+  }
+  .btn-outline{
+    background:transparent;
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+  .btn-outline:hover{
+    background:var(--ink);
+    color:var(--ivory);
+  }
+  .btn-sm{padding:9px 18px;font-size:11.5px;}
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .menu-toggle span{
+    width:24px;height:1.5px;background:var(--ink);
+    transition:.3s;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:70px 40px 0;
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero-text .eyebrow{margin-bottom:18px;display:block;}
+  .hero-text h1{
+    font-size:clamp(38px, 5vw, 60px);
+    margin-bottom:22px;
+  }
+  .hero-text h1 em{
+    font-style:italic;
+    color:var(--maroon);
+  }
+  .hero-text p{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:440px;
+    margin-bottom:34px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
+  .hero-meta{
+    display:flex;
+    gap:32px;
+    font-family:'Jost', sans-serif;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  .hero-meta strong{
+    display:block;
+    font-family:'Playfair Display', serif;
+    font-size:22px;
+    color:var(--ink);
+    text-transform:none;
+    letter-spacing:0;
+    font-weight:600;
+  }
+
+  .hero-visual{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .hero-frame{
+    position:relative;
+    width:100%;
+    max-width:400px;
+    border:1px solid var(--brass);
+    padding:14px;
+    background:var(--card);
+    box-shadow:var(--shadow);
+  }
+  .hero-frame img{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+  }
+  .hero-side-label{
+    position:absolute;
+    left:-46px;
+    top:50%;
+    transform:translateY(-50%) rotate(180deg);
+    writing-mode:vertical-rl;
+    font-family:'Jost', sans-serif;
+    font-size:12px;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:600;
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    margin-top:80px;
+    background:var(--ink);
+    color:var(--ivory);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:16px 0;
+  }
+  .marquee-track{
+    display:inline-block;
+    animation:scroll-left 28s linear infinite;
+    font-family:'Jost', sans-serif;
+    font-size:13.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  .marquee-track span{color:var(--brass-light);margin:0 10px;}
+  @keyframes scroll-left{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:110px 0;}
+  .section-head{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 64px;
+  }
+  .section-head .eyebrow{display:block;margin-bottom:14px;}
+  .section-head h2{font-size:clamp(30px,4vw,42px);margin-bottom:16px;}
+  .section-head p{color:var(--ink-soft);font-size:18px;}
+
+  /* ---------- COLLECTION ---------- */
+  .collection{background:var(--ivory-deep);}
+  .filter-row{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:48px;
+    font-family:'Jost', sans-serif;
+  }
+  .filter-btn{
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:9px 20px;
+    border:1px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    border-radius:2px;
+    transition:.2s;
+  }
+  .filter-btn.active, .filter-btn:hover{
+    background:var(--ink);
+    color:var(--ivory);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    overflow:hidden;
+    transition:transform .3s ease, box-shadow .3s ease;
+    display:flex;
+    flex-direction:column;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow);
+  }
+  .card-media{
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    background:#eee;
+    cursor:pointer;
+  }
+  .card-media img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .card:hover .card-media img{transform:scale(1.05);}
+  .tag{
+    position:absolute;
+    top:12px;left:12px;
+    z-index:2;
+    background:var(--maroon);
+    color:var(--ivory);
+    font-family:'Jost', sans-serif;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    font-weight:600;
+  }
+  .tag-selling-fast{background:#B5651D;}
+  .tag-sold-out{background:var(--ink);}
+  .tag-coming-soon{background:#6B6355;}
+
+  .card-dimmed .card-media img{
+    filter:grayscale(65%);
+    opacity:0.65;
+  }
+  .card-dimmed .card-media::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(42,37,32,0.12);
+  }
+  .card-body{
+    padding:20px 20px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+  }
+  .card-body .fabric{
+    font-family:'Jost', sans-serif;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:600;
+  }
+  .card-body h3{font-size:20px;font-weight:600;}
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-top:auto;
+    padding-top:6px;
+  }
+  .price{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);}
+  .price-old{
+    font-size:15px;
+    color:var(--ink-soft);
+    text-decoration:line-through;
+    opacity:.7;
+  }
+  .card-cta{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Jost', sans-serif;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:11px;
+    border:1px solid var(--ink);
+    transition:.25s;
+  }
+  .card-cta:hover{background:#C13584;border-color:#C13584;color:#fff;}
+  .card-cta svg{width:15px;height:15px;flex-shrink:0;}
+
+  .collection-more{
+    text-align:center;
+    margin-top:56px;
+  }
+
+  /* ---------- STORY ---------- */
+  .story{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:70px;
+    align-items:center;
+  }
+  .story-visual{position:relative;}
+  .story-visual img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border:1px solid var(--line);
+  }
+  .story-visual .accent-frame{
+    position:absolute;
+    inset:20px -20px -20px 20px;
+    border:1px solid var(--brass);
+    z-index:-1;
+  }
+  .story-visual-wrap{position:relative;}
+  .story-text .eyebrow{display:block;margin-bottom:16px;}
+  .story-text h2{font-size:clamp(28px,3.6vw,38px);margin-bottom:22px;}
+  .story-text p{color:var(--ink-soft);margin-bottom:18px;font-size:18px;}
+  .story-text p:last-of-type{margin-bottom:0;}
+  .story-sign{
+    margin-top:28px;
+    font-family:'Playball', cursive;
+    font-size:30px;
+    color:var(--maroon);
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--ink);color:var(--ivory);}
+  .process .section-head p{color:#C9BFAF;}
+  .process .eyebrow{color:var(--brass-light);}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border-top:1px solid rgba(244,239,227,0.18);
+  }
+  .step{
+    padding:44px 34px;
+    border-right:1px solid rgba(244,239,227,0.18);
+  }
+  .step:last-child{border-right:none;}
+  .step-num{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--brass-light);
+    margin-bottom:18px;
+  }
+  .step h3{font-size:23px;margin-bottom:12px;font-weight:600;}
+  .step p{color:#C9BFAF;font-size:16.5px;}
+
+  /* ---------- TESTIMONIAL / TRUST STRIP ---------- */
+  .trust{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    text-align:center;
+  }
+  .trust-item h3{
+    font-family:'Playfair Display', serif;
+    font-size:30px;
+    margin-bottom:8px;
+    color:var(--brass);
+  }
+  .trust-item p{
+    font-family:'Jost', sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--ivory-deep);}
+  .contact-inner{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:70px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+  .contact-left .eyebrow{display:block;margin-bottom:16px;}
+  .contact-left h2{font-size:clamp(28px,3.6vw,38px);margin-bottom:18px;}
+  .contact-left p{color:var(--ink-soft);font-size:18px;margin-bottom:30px;max-width:440px;}
+  .contact-actions{display:flex;gap:16px;flex-wrap:wrap;}
+
+  .contact-right{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .contact-line{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-line:last-child{border-bottom:none;padding-bottom:0;}
+  .contact-icon{
+    width:42px;height:42px;
+    border:1px solid var(--brass);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    color:var(--brass);
+  }
+  .contact-icon svg{width:19px;height:19px;}
+  .contact-line-text .label{
+    font-family:'Jost', sans-serif;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+    margin-bottom:2px;
+  }
+  .contact-line-text a, .contact-line-text span{
+    font-family:'Playfair Display', serif;
+    font-size:19px;
+    font-weight:600;
+  }
+  .contact-line-text a:hover{color:var(--brass);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:60px 0 30px;
+    border-top:1px solid var(--line);
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:40px;
+    padding-bottom:40px;
+  }
+  .footer-brand{display:flex;align-items:center;gap:12px;}
+  .footer-brand img{height:40px;}
+  .footer-brand-word{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:19px;
+  }
+  .footer-brand-word span{
+    display:block;
+    font-family:'Jost', sans-serif;
+    font-size:9px;
+    letter-spacing:0.3em;
+    color:var(--brass);
+    font-weight:600;
+  }
+  .footer-cols{display:flex;gap:70px;flex-wrap:wrap;}
+  .footer-col h4{
+    font-family:'Jost', sans-serif;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:16px;
+    color:var(--brass);
+  }
+  .footer-col a, .footer-col p{
+    display:block;
+    font-size:16px;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .footer-col a:hover{color:var(--ink);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
+    padding-top:26px;
+    border-top:1px solid var(--line);
+    font-family:'Jost', sans-serif;
+    font-size:12px;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed;
+    bottom:26px;right:26px;
+    width:58px;height:58px;
+    background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    z-index:200;
+    transition:transform .2s ease;
+  }
+  .float-wa:hover{transform:scale(1.08);}
+  .float-wa svg{width:28px;height:28px;fill:#fff;}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;inset:0;
+    background:rgba(20,17,14,0.92);
+    display:none;
+    align-items:center;justify-content:center;
+    z-index:300;
+    padding:30px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{
+    max-width:min(500px, 90vw);
+    max-height:85vh;
+    object-fit:contain;
+    border:1px solid var(--brass);
+  }
+  .lightbox-close{
+    position:absolute;
+    top:26px;right:34px;
+    color:var(--ivory);
+    font-size:34px;
+    font-family:'Playfair Display',serif;
+    cursor:pointer;
+    background:none;
+    border:none;
+    line-height:1;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    .wrap{padding:0 24px;}
+    .nav{padding:14px 24px;}
+    nav.links{display:none;}
+    .menu-toggle{display:flex;}
+    .hero{grid-template-columns:1fr;padding:40px 24px 0;gap:44px;}
+    .hero-visual{order:-1;}
+    .hero-frame{max-width:340px;margin:0 auto;}
+    .hero-side-label{display:none;}
+    .story{grid-template-columns:1fr;gap:40px;}
+    .story-visual{max-width:360px;margin:0 auto;}
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:1fr;}
+    .step{border-right:none;border-bottom:1px solid rgba(244,239,227,0.18);}
+    .trust{grid-template-columns:repeat(2,1fr);row-gap:36px;}
+    .contact-inner{grid-template-columns:1fr;padding:40px 28px;}
+    section{padding:70px 0;}
+  }
+
+  @media (max-width: 560px){
+    body{font-size:16.5px;}
+    .grid{grid-template-columns:1fr 1fr;gap:16px;}
+    .card-body{padding:14px 14px 16px;}
+    .card-body h3{font-size:16.5px;}
+    .price{font-size:18px;}
+    .hero-meta{flex-wrap:wrap;gap:22px;}
+    .hero-actions .btn{flex:1;justify-content:center;}
+    .contact-actions .btn{flex:1;justify-content:center;}
+  }
+
+  /* Mobile menu panel */
+  .mobile-menu{
+    position:fixed;
+    inset:0 0 0 auto;
+    width:78%;
+    max-width:320px;
+    height:100vh;
+    background:var(--ivory);
+    z-index:250;
+    transform:translateX(100%);
+    transition:transform .35s ease;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+    box-shadow:-10px 0 40px rgba(0,0,0,0.2);
+  }
+  .mobile-menu.open{transform:translateX(0);}
+  .mobile-menu a{
+    font-family:'Jost', sans-serif;
+    font-size:16px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:6px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .mobile-menu-close{
+    align-self:flex-end;
+    background:none;border:none;
+    font-size:28px;
+    cursor:pointer;
+    color:var(--ink);
+  }
+  .scrim{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,0.4);
+    z-index:240;
+    display:none;
+  }
+  .scrim.open{display:block;}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <img src="assets/logo.png" alt="Saanvika Sarees logo">
+      <span class="brand-word">SAANVIKA<span>HANDLOOM · ELEGANT</span></span>
+    </a>
+    <nav class="links">
+      <a href="#collection">Collection</a>
+      <a href="#story">Our Story</a>
+      <a href="#process">Sourcing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-solid btn-sm" href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener">DM on Instagram</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">&times;</button>
+  <a href="#collection">Collection</a>
+  <a href="#story">Our Story</a>
+  <a href="#process">Sourcing</a>
+  <a href="#contact">Contact</a>
+  <a href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener">DM on Instagram</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<div id="top"></div>
+<section class="hero" style="padding-top:70px;">
+  <div class="hero-text">
+    <span class="eyebrow">Handloom &amp; Silk Cotton Sarees</span>
+    <h1>Timeless drapes,<br>woven with <em>grace</em>.</h1>
+    <p>Saanvika Sarees brings handpicked handloom and silk cotton sarees straight from India's finest weavers to your doorstep across Malaysia.</p>
+    <div class="hero-actions">
+      <a href="#collection" class="btn btn-solid">View Collection</a>
+      <a href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener" class="btn btn-outline">Enquire on Instagram</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>10+</strong>Curated Weaves</div>
+      <div><strong>100%</strong>Sourced from India</div>
+      <div><strong>MY</strong>Delivered Islandwide</div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-frame">
+      <span class="hero-side-label">Handloom · Elegant</span>
+      <img src="assets/p10.jpeg" alt="Rani pink and ivory silk cotton saree with gold border">
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    AUTHENTIC HANDLOOM <span>—</span> DIRECT FROM INDIA <span>—</span> HANDPICKED WITH LOVE <span>—</span> DELIVERED ACROSS MALAYSIA <span>—</span>
+    AUTHENTIC HANDLOOM <span>—</span> DIRECT FROM INDIA <span>—</span> HANDPICKED WITH LOVE <span>—</span> DELIVERED ACROSS MALAYSIA <span>—</span>
+  </div>
+</div>
+
+<!-- ================= COLLECTION ================= -->
+<section class="collection" id="collection">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Collection</span>
+      <h2>Every weave, handpicked</h2>
+      <p>Semi silk cotton, Kalyani cotton and Kanchi weaves — each saree sourced directly from Indian handloom artisans.</p>
+    </div>
+
+    <div class="filter-row" id="filterRow">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="silk cotton">Silk Cotton</button>
+      <button class="filter-btn" data-filter="kanchi cotton">Kanchi Cotton</button>
+      <button class="filter-btn" data-filter="soft silk">Soft Silk</button>
+    </div>
+
+    <div class="grid" id="productGrid">
+      <!-- Product cards injected by JS -->
+    </div>
+
+    <div class="collection-more">
+      <a href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener" class="btn btn-outline">See Full Collection on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY ================= -->
+<section id="story">
+  <div class="wrap story">
+    <div class="story-visual-wrap">
+      <div class="accent-frame"></div>
+      <div class="story-visual">
+        <img src="assets/p5.jpeg" alt="Kanchi cotton saree with elephant motif border, maroon and gold">
+      </div>
+    </div>
+    <div class="story-text">
+      <span class="eyebrow">Our Story</span>
+      <h2>From the looms of India, to the women of Malaysia.</h2>
+      <p>Saanvika Sarees began with a simple belief — that every woman deserves to feel elegant without compromise. We travel across India's weaving belts to handpick each saree ourselves: Kalyani cottons, semi silk cottons, and Kanchi weaves rich with tradition.</p>
+      <p>No mass production, no middlemen. Just honest sourcing, fair pricing, and sarees that carry the warmth of the hands that wove them.</p>
+      <div class="story-sign">— with love, Saanvika</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How It Reaches You</span>
+      <h2>Sourced, chosen, delivered</h2>
+      <p>A short journey from the handloom to your wardrobe.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">I.</div>
+        <h3>Sourced in India</h3>
+        <p>We work directly with handloom weavers and small mills across India, choosing fabric and craftsmanship over volume.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">II.</div>
+        <h3>Handpicked for Quality</h3>
+        <p>Every saree is personally inspected for weave, colour and finish before it earns a place in our collection.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">III.</div>
+        <h3>Delivered Across Malaysia</h3>
+        <p>Once you've made your pick over Instagram DM, your saree is packed with care and shipped straight to your door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST STRIP ================= -->
+<section style="padding:70px 0;">
+  <div class="wrap trust">
+    <div class="trust-item"><h3>100%</h3><p>Handloom Sourced</p></div>
+    <div class="trust-item"><h3>Direct</h3><p>From India</p></div>
+    <div class="trust-item"><h3>Affordable</h3><p>Luxury Pricing</p></div>
+    <div class="trust-item"><h3>Fast</h3><p>Delivery, Malaysia-wide</p></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Found one you love?</h2>
+        <p>DM us the saree name on Instagram and we'll confirm availability, sizing and delivery — usually within the hour.</p>
+        <div class="contact-actions">
+          <a href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener" class="btn btn-solid">DM on Instagram</a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-line">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </div>
+          <div class="contact-line-text">
+            <div class="label">Instagram</div>
+            <a href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener">@saan.vikasarees</a>
+          </div>
+        </div>
+        <div class="contact-line">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.2-9.3-9.3A5.4 5.4 0 0 1 12 6.1a5.4 5.4 0 0 1 9.3 5.6C19 15.8 12 21 12 21Z"/></svg>
+          </div>
+          <div class="contact-line-text">
+            <div class="label">Delivery</div>
+            <span>Across Malaysia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Saanvika Sarees logo">
+        <div class="footer-brand-word">SAANVIKA SAREES<span>HANDLOOM · ELEGANT</span></div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#collection">Collection</a>
+          <a href="#story">Our Story</a>
+          <a href="#process">Sourcing</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener">Instagram DM</a>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <p>Delivery across Malaysia</p>
+          <p>Handpicked in India</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Saanvika Sarees. All rights reserved.</span>
+      <span>Handloom · Elegant</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener" class="float-wa" aria-label="DM us on Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="#fff" stroke="none"/></svg>
+</a>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+<script src="products.js"></script>
+<script>
+  // Product data lives in products.js (loaded above this script).
+  // Open products.js if you want to add, remove, or edit a saree.
+
+  const IG_HANDLE = "saan.vikasarees";
+  const grid = document.getElementById('productGrid');
+
+  function igLink(){
+    return `https://instagram.com/${IG_HANDLE}`;
+  }
+
+  const STATUS_LABEL = {
+    "selling-fast": "Selling Fast",
+    "sold-out": "Sold Out",
+    "coming-soon": "Coming Soon"
+  };
+
+  function renderProducts(filter){
+    grid.innerHTML = '';
+    products
+      .filter(p => filter === 'all' || p.category === filter)
+      .forEach((p, i) => {
+        const card = document.createElement('div');
+        const isDimmed = p.status === 'sold-out' || p.status === 'coming-soon';
+        card.className = 'card' + (isDimmed ? ' card-dimmed' : '');
+
+        const badge = p.status
+          ? `<span class="tag tag-${p.status}">${STATUS_LABEL[p.status]}</span>`
+          : (p.oldPrice ? '<span class="tag">Sale</span>' : '');
+
+        const ctaLabel = p.status === 'sold-out' ? 'Notify Me' : (p.status === 'coming-soon' ? 'Ask About This' : 'DM to Enquire');
+
+        card.innerHTML = `
+          <div class="card-media" data-img="${p.img}" data-name="${p.name}">
+            ${badge}
+            <img src="${p.img}" alt="${p.name} — ${p.fabric} saree" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="fabric">${p.fabric}</span>
+            <h3>${p.name}</h3>
+            <div class="price-row">
+              ${p.price ? `<span class="price">RM${p.price}</span>` : `<span class="price" style="font-size:16px;">Enquire for price</span>`}
+              ${p.oldPrice ? `<span class="price-old">RM${p.oldPrice}</span>` : ''}
+            </div>
+            <a class="card-cta" href="${igLink()}" target="_blank" rel="noopener" title='Mention "${p.name}" when you DM us'>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+              ${ctaLabel}
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+    // lightbox bindings
+    document.querySelectorAll('.card-media').forEach(el => {
+      el.addEventListener('click', () => openLightbox(el.dataset.img, el.dataset.name));
+    });
+  }
+
+  renderProducts('all');
+
+  // ---------- Filters ----------
+  document.getElementById('filterRow').addEventListener('click', (e) => {
+    if(!e.target.classList.contains('filter-btn')) return;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    renderProducts(e.target.dataset.filter);
+  });
+
+  // ---------- Lightbox ----------
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  function openLightbox(src, alt){
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add('open');
+  }
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') lightbox.classList.remove('open'); });
+
+  // ---------- Mobile menu ----------
+  const menuToggle = document.getElementById('menuToggle');
+  const menuClose = document.getElementById('menuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const scrim = document.getElementById('scrim');
+  function openMenu(){ mobileMenu.classList.add('open'); scrim.classList.add('open'); }
+  function closeMenu(){ mobileMenu.classList.remove('open'); scrim.classList.remove('open'); }
+  menuToggle.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  scrim.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+</body>
+</html>
