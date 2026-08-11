@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saanvvika Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+  <h1>Saanvvika Admin</h1>
+
+  <div id="login">
+    <h2>Admin Login</h2>
+
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p id="loginMessage"></p>
+  </div>
+
+  <div id="dashboard" style="display:none;">
+
+    <h2>Products</h2>
+
+    <button onclick="logout()">Logout</button>
+    <button onclick="showAddProduct()">+ Add Product</button>
+
+    <div id="products"></div>
+
+  </div>
+
+<script>
+
+const SUPABASE_URL = "https://lptojkpcugrosayyenua.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_IEiBy-YGHc3jwPIlZqq3Lg_KwhiXYt9";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+// LOGIN
+async function login() {
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+
+    document.getElementById("loginMessage").innerText =
+      error.message;
+
+    return;
+  }
+
+  document.getElementById("login").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+
+  loadProducts();
+}
+
+
+// LOGOUT
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  location.reload();
+
+}
+
+
+// LOAD PRODUCTS
+async function loadProducts() {
+
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .order("id", { ascending: false });
+
+  if (error) {
+
+    alert(error.message);
+    return;
+
+  }
+
+  const container = document.getElementById("products");
+
+  container.innerHTML = "";
+
+  data.forEach(product => {
+
+    const item = document.createElement("div");
+
+    item.innerHTML = `
+      <hr>
+
+      <h3>${product.name}</h3>
+
+      <p>Price: ${product.price}</p>
+
+      <p>${product.description || ""}</p>
+
+      <p>Collection: ${product.collection || ""}</p>
+
+      <button onclick="editProduct(${product.id})">
+        Edit
+      </button>
+
+    `;
+
+    container.appendChild(item);
+
+  });
+
+}
+
+
+// ADD PRODUCT
+function showAddProduct() {
+
+  const name = prompt("Product name:");
+
+  if (!name) return;
+
+  const price = prompt("Price:");
+
+  const description = prompt("Description:");
+
+  const collection = prompt("Collection:");
+
+  addProduct(name, price, description, collection);
+
+}
+
+
+async function addProduct(
+  name,
+  price,
+  description,
+  collection
+) {
+
+  const { error } = await supabaseClient
+    .from("products")
+    .insert({
+      name,
+      price,
+      description,
+      collection,
+      active: true
+    });
+
+  if (error) {
+
+    alert(error.message);
+    return;
+
+  }
+
+  loadProducts();
+
+}
+
+
+// EDIT PRODUCT
+async function editProduct(id) {
+
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+
+    alert(error.message);
+    return;
+
+  }
+
+  const name =
+    prompt("Product name:", data.name);
+
+  const price =
+    prompt("Price:", data.price);
+
+  const description =
+    prompt("Description:", data.description || "");
+
+  const collection =
+    prompt("Collection:", data.collection || "");
+
+  if (!name) return;
+
+  const { error: updateError } =
+    await supabaseClient
+      .from("products")
+      .update({
+        name,
+        price,
+        description,
+        collection
+      })
+      .eq("id", id);
+
+  if (updateError) {
+
+    alert(updateError.message);
+    return;
+
+  }
+
+  loadProducts();
+
+}
+
+</script>
+
+</body>
+</html>
