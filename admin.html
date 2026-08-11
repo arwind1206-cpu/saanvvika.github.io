@@ -198,7 +198,7 @@ async function loadProducts(){
     row.className = "product-row";
     const badge = p.status ? `<span class="badge ${p.status}">${p.status.replace('-', ' ')}</span>` : '';
     row.innerHTML = `
-      <img src="${p.img_url || ''}" alt="${p.name}">
+      <img src="${p.image_url || ''}" alt="${p.name}">
       <div class="product-info">
         <h3>${p.name}</h3>
         <p>RM${p.price || '—'} · ${p.collection || ''} ${p.active ? '' : '· (hidden)'}</p>
@@ -237,8 +237,8 @@ function openEditForm(id){
   document.getElementById("formTitle").innerText = "Edit Saree";
   document.getElementById("editId").value = p.id;
   document.getElementById("photoFile").value = "";
-  document.getElementById("photoPreview").src = p.img_url || "";
-  document.getElementById("photoPreview").style.display = p.img_url ? "block" : "none";
+  document.getElementById("photoPreview").src = p.image_url || "";
+  document.getElementById("photoPreview").style.display = p.image_url ? "block" : "none";
   document.getElementById("fName").value = p.name || "";
   document.getElementById("fPrice").value = p.price || "";
   document.getElementById("fCollection").value = p.collection || "silk cotton";
@@ -275,7 +275,7 @@ async function saveProduct(){
     return;
   }
 
-  let img_url = document.getElementById("photoPreview").src || null;
+  let image_url = document.getElementById("photoPreview").src || null;
 
   // Upload new photo if one was chosen
   if(file){
@@ -291,10 +291,10 @@ async function saveProduct(){
     const { data: urlData } = supabaseClient
       .storage.from("product-images")
       .getPublicUrl(fileName);
-    img_url = urlData.publicUrl;
+    image_url = urlData.publicUrl;
   }
 
-  const payload = { name, price, collection, status, description, active, img_url };
+  const payload = { name, price, collection, status, description, active, image_url };
 
   let error;
   if(id){
