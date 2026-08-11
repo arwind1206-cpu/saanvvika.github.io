@@ -3,170 +3,332 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saanvika Sarees — Handloom. Elegant. Direct from India.</title>
-<meta name="description" content="Saanvika Sarees — authentic handloom and silk cotton sarees, handpicked in India and delivered across Malaysia.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500;600&family=Playball&display=swap" rel="stylesheet">
+<title>Saanvika Sarees — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
-    --ivory: #F4EFE3; --ivory-deep: #ECE4D2; --ink: #2A2520; --ink-soft: #4A423A;
-    --brass: #A9832E; --brass-light: #C9A24F; --maroon: #6B2737; --line: #DDD0B4;
-    --card: #FBF8F1; --shadow: 0 20px 40px -20px rgba(42,37,32,0.25);
+    --ivory:#F4EFE3; --ink:#2A2520; --brass:#A9832E; --line:#DDD0B4; --card:#FBF8F1;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--ivory); color:var(--ink); font-family:'EB Garamond', serif; font-size:18px; line-height:1.6;}
-  a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block;}
-  h1,h2,h3{font-family:'Playfair Display', serif; font-weight:600; line-height:1.15;}
-  .eyebrow{font-family:'Jost', sans-serif; font-size:12.5px; letter-spacing:0.28em; text-transform:uppercase; color:var(--brass); font-weight:600;}
-  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
-
-  header{position:sticky; top:0; z-index:100; background:rgba(244,239,227,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
-  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 40px; max-width:1200px; margin:0 auto;}
-  .brand-word{font-family:'Playfair Display', serif; font-weight:700; font-size:20px;}
-  .brand-word span{display:block; font-family:'Jost', sans-serif; font-size:9.5px; letter-spacing:0.32em; color:var(--brass); font-weight:600;}
-  .btn{display:inline-flex; align-items:center; gap:8px; font-family:'Jost', sans-serif; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; padding:12px 24px; border-radius:2px; border:1px solid var(--ink); transition:.25s;}
-  .btn-solid{background:var(--ink); color:var(--ivory);}
-  .btn-solid:hover{background:var(--brass); border-color:var(--brass);}
-  .btn-sm{padding:9px 18px; font-size:11.5px;}
-
-  .hero{padding:70px 40px 60px; max-width:1200px; margin:0 auto; text-align:center;}
-  .hero h1{font-size:clamp(34px,5vw,54px); margin:16px 0;}
-  .hero p{color:var(--ink-soft); font-size:19px; max-width:520px; margin:0 auto 26px;}
-
-  section{padding:70px 0;}
-  .section-head{text-align:center; max-width:600px; margin:0 auto 50px;}
-  .section-head .eyebrow{display:block; margin-bottom:14px;}
-  .section-head h2{font-size:clamp(28px,4vw,38px);}
-
-  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px;}
-  .card{background:var(--card); border:1px solid var(--line); overflow:hidden; transition:.3s;}
-  .card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
-  .card-media{position:relative; aspect-ratio:4/5; overflow:hidden; background:#eee;}
-  .card-media img{width:100%; height:100%; object-fit:cover;}
-  .tag{position:absolute; top:12px; left:12px; z-index:2; font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:5px 10px; font-weight:600; color:var(--ivory); background:var(--maroon);}
-  .tag.selling-fast{background:#B5651D;}
-  .tag.sold-out{background:var(--ink);}
-  .tag.coming-soon{background:#6B6355;}
-  .dimmed img{filter:grayscale(60%); opacity:.65;}
-  .card-body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:8px;}
-  .card-body .fabric{font-family:'Jost',sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--brass); font-weight:600;}
-  .card-body h3{font-size:19px;}
-  .price{font-family:'Playfair Display',serif; font-size:21px; font-weight:700;}
-  .card-cta{margin-top:8px; display:flex; align-items:center; justify-content:center; gap:8px; font-family:'Jost',sans-serif; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; padding:11px; border:1px solid var(--ink); transition:.2s;}
-  .card-cta:hover{background:#C13584; border-color:#C13584; color:#fff;}
-  .card-cta svg{width:15px;height:15px;}
-
-  footer{padding:50px 0; border-top:1px solid var(--line); text-align:center;}
-  footer p{color:var(--ink-soft); font-size:14px; margin-top:6px;}
-
-  .float-ig{position:fixed; bottom:26px; right:26px; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(0,0,0,0.25); z-index:200; background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
-
-  .empty-msg{text-align:center; color:var(--ink-soft); padding:40px;}
-
-  @media (max-width:980px){
-    .wrap, .nav{padding-left:24px; padding-right:24px;}
-    .grid{grid-template-columns:repeat(2,1fr); gap:18px;}
+  *{box-sizing:border-box;}
+  body{
+    font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--ivory); color:var(--ink);
+    margin:0; padding:24px; max-width:900px; margin:0 auto;
   }
+  h1{font-size:22px; margin-bottom:4px;}
+  h2{font-size:17px; margin:28px 0 12px;}
+  .card{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:10px; padding:20px; margin-bottom:20px;
+  }
+  label{display:block; font-size:13px; font-weight:600; margin:14px 0 5px;}
+  input, select, textarea{
+    width:100%; padding:10px 12px; border:1px solid var(--line);
+    border-radius:6px; font-size:15px; background:#fff; color:var(--ink);
+  }
+  textarea{min-height:70px; resize:vertical;}
+  button{
+    font-size:14px; font-weight:600; padding:11px 20px;
+    border-radius:6px; border:1px solid var(--ink); cursor:pointer;
+    background:var(--ink); color:var(--ivory); margin-top:16px;
+  }
+  button.secondary{background:transparent; color:var(--ink);}
+  button.danger{background:#8B2E2E; border-color:#8B2E2E; color:#fff;}
+  #loginMessage{color:#8B2E2E; font-size:14px; margin-top:8px;}
+  .product-row{
+    display:flex; gap:14px; align-items:center;
+    padding:14px 0; border-bottom:1px solid var(--line);
+  }
+  .product-row img{
+    width:70px; height:85px; object-fit:cover; border-radius:6px;
+    background:#eee; flex-shrink:0;
+  }
+  .product-info{flex:1;}
+  .product-info h3{margin:0 0 4px; font-size:16px;}
+  .product-info p{margin:0; font-size:13px; color:#6b6355;}
+  .badge{
+    display:inline-block; font-size:11px; font-weight:600;
+    padding:2px 8px; border-radius:10px; margin-top:4px;
+    background:#B5651D; color:#fff;
+  }
+  .badge.sold-out{background:var(--ink);}
+  .badge.coming-soon{background:#6B6355;}
+  .row-actions{display:flex; gap:8px; flex-shrink:0;}
+  .row-actions button{margin-top:0; padding:8px 14px; font-size:13px;}
+  #formPanel{display:none;}
+  .top-bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .status-msg{font-size:13px; margin-top:10px;}
+  .status-msg.ok{color:#2E7D32;}
+  .status-msg.err{color:#8B2E2E;}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="nav">
-    <div class="brand-word">SAANVIKA<span>HANDLOOM · ELEGANT</span></div>
-    <a class="btn btn-solid btn-sm" href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener">DM on Instagram</a>
+<div id="login">
+  <h1>Saanvika Sarees — Admin</h1>
+  <div class="card">
+    <label>Email</label>
+    <input id="email" type="email" placeholder="you@example.com">
+    <label>Password</label>
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="loginMessage"></p>
   </div>
-</header>
+</div>
 
-<section class="hero">
-  <span class="eyebrow">Handloom &amp; Silk Cotton Sarees</span>
-  <h1>Timeless drapes, woven with grace.</h1>
-  <p>Saanvika Sarees brings handpicked handloom and silk cotton sarees straight from India's finest weavers to your doorstep across Malaysia.</p>
-  <a href="#collection" class="btn btn-solid">View Collection</a>
-</section>
-
-<section id="collection">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">The Collection</span>
-      <h2>Every weave, handpicked</h2>
-    </div>
-    <div class="grid" id="productGrid">
-      <p class="empty-msg">Loading sarees...</p>
-    </div>
+<div id="dashboard" style="display:none;">
+  <div class="top-bar">
+    <h1>Saanvika Sarees — Admin</h1>
+    <button class="secondary" onclick="logout()">Logout</button>
   </div>
-</section>
 
-<footer>
-  <div class="brand-word" style="justify-content:center; display:flex; flex-direction:column; align-items:center;">SAANVIKA SAREES<span>HANDLOOM · ELEGANT</span></div>
-  <p>© 2026 Saanvika Sarees · Delivered across Malaysia</p>
-</footer>
+  <button onclick="openAddForm()">+ Add New Saree</button>
 
-<a href="https://instagram.com/saan.vikasarees" target="_blank" rel="noopener" class="float-ig" aria-label="DM us on Instagram">
-  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="#fff" stroke="none"/></svg>
-</a>
+  <div class="card" id="formPanel">
+    <h2 id="formTitle">Add Saree</h2>
+    <input type="hidden" id="editId">
+
+    <label>Photo</label>
+    <input type="file" id="photoFile" accept="image/*">
+    <img id="photoPreview" src="" alt="" style="display:none; margin-top:10px; width:120px; border-radius:6px;">
+
+    <label>Name</label>
+    <input id="fName" placeholder="e.g. Royal Blue & Emerald Silk Cotton">
+
+    <label>Price (RM)</label>
+    <input id="fPrice" type="number" placeholder="69">
+
+    <label>Collection / Category</label>
+    <select id="fCollection">
+      <option value="silk cotton">Silk Cotton</option>
+      <option value="kalyani cotton">Kalyani Cotton</option>
+      <option value="kanchi cotton">Kanchi Cotton</option>
+      <option value="soft silk">Soft Silk</option>
+    </select>
+
+    <label>Status</label>
+    <select id="fStatus">
+      <option value="">No badge (normal listing)</option>
+      <option value="selling-fast">Selling Fast</option>
+      <option value="sold-out">Sold Out</option>
+      <option value="coming-soon">Coming Soon</option>
+    </select>
+
+    <label>Description (optional)</label>
+    <textarea id="fDescription" placeholder="Any extra detail about the fabric or weave"></textarea>
+
+    <label>Instagram Post Link (optional)</label>
+    <input id="fInstaLink" placeholder="https://www.instagram.com/p/...">
+    <p style="font-size:12px; color:#6b6355; margin-top:4px;">Paste the link to this saree's specific Instagram post. Leave blank to use your main profile instead.</p>
+
+    <label style="display:flex; align-items:center; gap:8px; margin-top:14px;">
+      <input type="checkbox" id="fActive" checked style="width:auto;">
+      Show this saree on the website
+    </label>
+
+    <div style="display:flex; gap:10px;">
+      <button onclick="saveProduct()">Save</button>
+      <button class="secondary" onclick="closeForm()">Cancel</button>
+    </div>
+    <p id="formStatus" class="status-msg"></p>
+  </div>
+
+  <h2>Your Sarees</h2>
+  <div class="card" id="products"></div>
+</div>
 
 <script>
-  const SUPABASE_URL = "https://lptojkpcugrosayyenua.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_IEiBy-YGHc3jwPIlZqq3Lg_KwhiXYt9";
-  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  const IG_LINK = "https://instagram.com/saan.vikasarees";
+const SUPABASE_URL = "https://lptojkpcugrosayyenua.supabase.co";
+const SUPABASE_KEY = "sb_publishable_IEiBy-YGHc3jwPIlZqq3Lg_KwhiXYt9";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const STATUS_LABEL = {
-    "selling-fast": "Selling Fast",
-    "sold-out": "Sold Out",
-    "coming-soon": "Coming Soon"
-  };
+// ---------- LOGIN ----------
+async function login(){
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+  if(error){
+    document.getElementById("loginMessage").innerText = error.message;
+    return;
+  }
+  document.getElementById("login").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+  loadProducts();
+}
 
-  async function loadShop(){
-    const grid = document.getElementById('productGrid');
-    const { data, error } = await supabaseClient
-      .from('products')
-      .select('*')
-      .eq('active', true)
-      .order('id', { ascending: false });
+async function logout(){
+  await supabaseClient.auth.signOut();
+  location.reload();
+}
 
-    if(error){
-      grid.innerHTML = `<p class="empty-msg">Couldn't load sarees right now. Please refresh.</p>`;
-      return;
-    }
-    if(!data.length){
-      grid.innerHTML = `<p class="empty-msg">New sarees coming soon — check back shortly!</p>`;
-      return;
-    }
+// Stay logged in on refresh
+supabaseClient.auth.getSession().then(({ data }) => {
+  if(data.session){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    loadProducts();
+  }
+});
 
-    grid.innerHTML = '';
-    data.forEach(p => {
-      const isDimmed = p.status === 'sold-out' || p.status === 'coming-soon';
-      const badge = p.status ? `<span class="tag ${p.status}">${STATUS_LABEL[p.status]}</span>` : '';
-      const ctaLabel = p.status === 'sold-out' ? 'Notify Me' : (p.status === 'coming-soon' ? 'Ask About This' : 'DM to Enquire');
-      const linkTarget = p.instagram_link || IG_LINK;
+// ---------- PHOTO PREVIEW ----------
+document.getElementById("photoFile").addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  const preview = document.getElementById("photoPreview");
+  if(file){
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = "block";
+  }
+});
 
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <div class="card-media${isDimmed ? ' dimmed' : ''}">
-          ${badge}
-          <img src="${p.image_url || ''}" alt="${p.name}" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="fabric">${p.collection || ''}</span>
-          <h3>${p.name}</h3>
-          <div class="price">${p.price ? 'RM' + p.price : 'Enquire for price'}</div>
-          <a class="card-cta" href="${linkTarget}" target="_blank" rel="noopener" title='Mention "${p.name}" when you DM us'>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
-            ${ctaLabel}
-          </a>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
+// ---------- LOAD PRODUCTS ----------
+async function loadProducts(){
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .order("id", { ascending: false });
+
+  const container = document.getElementById("products");
+  if(error){
+    container.innerHTML = `<p class="status-msg err">${error.message}</p>`;
+    return;
+  }
+  if(!data.length){
+    container.innerHTML = `<p style="color:#6b6355;">No sarees added yet. Click "+ Add New Saree" above.</p>`;
+    return;
+  }
+  container.innerHTML = "";
+  data.forEach(p => {
+    const row = document.createElement("div");
+    row.className = "product-row";
+    const badge = p.status ? `<span class="badge ${p.status}">${p.status.replace('-', ' ')}</span>` : '';
+    row.innerHTML = `
+      <img src="${p.image_url || ''}" alt="${p.name}">
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <p>RM${p.price || '—'} · ${p.collection || ''} ${p.active ? '' : '· (hidden)'}</p>
+        ${badge}
+      </div>
+      <div class="row-actions">
+        <button class="secondary" onclick="openEditForm(${p.id})">Edit</button>
+        <button class="danger" onclick="deleteProduct(${p.id})">Delete</button>
+      </div>
+    `;
+    container.appendChild(row);
+  });
+  window._products = data; // cache for editing
+}
+
+// ---------- FORM OPEN/CLOSE ----------
+function openAddForm(){
+  document.getElementById("formTitle").innerText = "Add Saree";
+  document.getElementById("editId").value = "";
+  document.getElementById("photoFile").value = "";
+  document.getElementById("photoPreview").style.display = "none";
+  document.getElementById("fName").value = "";
+  document.getElementById("fPrice").value = "";
+  document.getElementById("fCollection").value = "silk cotton";
+  document.getElementById("fStatus").value = "";
+  document.getElementById("fDescription").value = "";
+  document.getElementById("fInstaLink").value = "";
+  document.getElementById("fActive").checked = true;
+  document.getElementById("formStatus").innerText = "";
+  document.getElementById("formPanel").style.display = "block";
+  document.getElementById("formPanel").scrollIntoView({ behavior: "smooth" });
+}
+
+function openEditForm(id){
+  const p = (window._products || []).find(x => x.id === id);
+  if(!p) return;
+  document.getElementById("formTitle").innerText = "Edit Saree";
+  document.getElementById("editId").value = p.id;
+  document.getElementById("photoFile").value = "";
+  document.getElementById("photoPreview").src = p.image_url || "";
+  document.getElementById("photoPreview").style.display = p.image_url ? "block" : "none";
+  document.getElementById("fName").value = p.name || "";
+  document.getElementById("fPrice").value = p.price || "";
+  document.getElementById("fCollection").value = p.collection || "silk cotton";
+  document.getElementById("fStatus").value = p.status || "";
+  document.getElementById("fDescription").value = p.description || "";
+  document.getElementById("fInstaLink").value = p.instagram_link || "";
+  document.getElementById("fActive").checked = p.active !== false;
+  document.getElementById("formStatus").innerText = "";
+  document.getElementById("formPanel").style.display = "block";
+  document.getElementById("formPanel").scrollIntoView({ behavior: "smooth" });
+}
+
+function closeForm(){
+  document.getElementById("formPanel").style.display = "none";
+}
+
+// ---------- SAVE (ADD or EDIT) ----------
+async function saveProduct(){
+  const statusEl = document.getElementById("formStatus");
+  statusEl.className = "status-msg";
+  statusEl.innerText = "Saving...";
+
+  const id = document.getElementById("editId").value;
+  const name = document.getElementById("fName").value.trim();
+  const price = document.getElementById("fPrice").value;
+  const collection = document.getElementById("fCollection").value;
+  const status = document.getElementById("fStatus").value || null;
+  const description = document.getElementById("fDescription").value.trim();
+  const instagram_link = document.getElementById("fInstaLink").value.trim() || null;
+  const active = document.getElementById("fActive").checked;
+  const file = document.getElementById("photoFile").files[0];
+
+  if(!name){
+    statusEl.className = "status-msg err";
+    statusEl.innerText = "Please enter a name.";
+    return;
   }
 
-  loadShop();
+  let image_url = document.getElementById("photoPreview").src || null;
+
+  // Upload new photo if one was chosen
+  if(file){
+    const fileName = `${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
+    const { error: uploadError } = await supabaseClient
+      .storage.from("product-images")
+      .upload(fileName, file);
+    if(uploadError){
+      statusEl.className = "status-msg err";
+      statusEl.innerText = "Photo upload failed: " + uploadError.message;
+      return;
+    }
+    const { data: urlData } = supabaseClient
+      .storage.from("product-images")
+      .getPublicUrl(fileName);
+    image_url = urlData.publicUrl;
+  }
+
+  const payload = { name, price, collection, status, description, active, image_url, instagram_link };
+
+  let error;
+  if(id){
+    ({ error } = await supabaseClient.from("products").update(payload).eq("id", id));
+  } else {
+    ({ error } = await supabaseClient.from("products").insert(payload));
+  }
+
+  if(error){
+    statusEl.className = "status-msg err";
+    statusEl.innerText = error.message;
+    return;
+  }
+
+  statusEl.className = "status-msg ok";
+  statusEl.innerText = "Saved!";
+  loadProducts();
+  setTimeout(closeForm, 600);
+}
+
+// ---------- DELETE ----------
+async function deleteProduct(id){
+  if(!confirm("Delete this saree? This can't be undone.")) return;
+  const { error } = await supabaseClient.from("products").delete().eq("id", id);
+  if(error){ alert(error.message); return; }
+  loadProducts();
+}
 </script>
 </body>
 </html>
